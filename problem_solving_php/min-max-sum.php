@@ -49,18 +49,16 @@ function miniMaxSum($arr)
     $arrayLength = count($arr);
     $total = $arrayLength - 1;
     $min = $max = 0;
-
+    $arrTotal = [];
     for ($i = 0; $i < $arrayLength; $i++) {
 
-        if ($i == $total) {
-            break;
-        }
+        $newArr = $arr;
+        unset($newArr[$i]);
 
-        $min += $arr[$i] ?? 0;
-        $max += $arr[$total - $i] ?? 0;
+        $arrTotal[] = array_sum($newArr);
     }
 
-    echo $min . ' ' . $max;
+    echo min($arrTotal) . ' ' . max($arrTotal);
 }
 
 $arr_temp = rtrim(fgets(STDIN));
